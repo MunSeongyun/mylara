@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Actions\UserIndexAction;
+use App\Http\Controllers\TestRequestController;
 
 Route::get('/', function () {
     dd('Welcome to Laravel');
@@ -44,3 +45,9 @@ Route::post('/user', [UserController::class, 'store']);
 Route::get('/users', UserIndexAction::class);
 
 Route::get('/layered/user/{id}', [App\Http\Controllers\Layered\UserController::class, 'index']);
+
+Route::get('/request-test', [TestRequestController::class, 'create'])
+->name('request.create');
+
+Route::post('/request-test', [TestRequestController::class, 'store'])
+->name('request.store');
