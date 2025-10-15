@@ -21,7 +21,7 @@ class ArticleResource extends JsonResource
             'created_at' => $this->created_at,
             '_links' => [
                 'self' => [
-                    'href' => route('api.articles.show', ['user' => $this->id]),
+                    'href' => route('api.articles.show', ['article' => $this->id]),
                 ],
             ],
             '_embedded' => [
