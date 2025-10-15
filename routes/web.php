@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Actions\UserIndexAction;
 use App\Http\Controllers\TestRequestController;
+use App\Http\Controllers\ResponseDemoController;
+
 
 Route::get('/', function () {
     dd('Welcome to Laravel');
@@ -51,3 +53,12 @@ Route::get('/request-test', [TestRequestController::class, 'create'])
 
 Route::post('/request-test', [TestRequestController::class, 'store'])
 ->name('request.store');
+
+Route::prefix('response-demo')->group(function () {
+    Route::get('/string', [ResponseDemoController::class, 'string'])->name('string');
+    Route::get('/view', [ResponseDemoController::class, 'view'])->name('view');
+    Route::get('/json', [ResponseDemoController::class, 'json'])->name('json');
+    Route::get('/download', [ResponseDemoController::class, 'download'])->name('download');
+    Route::get('/redirect', [ResponseDemoController::class, 'redirect'])->name('redirect');
+    Route::get('/redirect-target', [ResponseDemoController::class, 'redirectTarget'])->name('redirect-target');
+});
