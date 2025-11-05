@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\PublisherController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -20,3 +21,5 @@ Route::get('/profile', function (Request $request) {
         'app_version' => $request->header('X-App-Version'),
     ]);
 })->middleware(['ensure.version']);
+
+Route::post('/publishers', [PublisherController::class, 'store']);
